@@ -60,11 +60,13 @@ Casey Perkins, Bryn Rivenes
 
 -   The lower the surface area, the less heat can escape, so animals at higher altitudes should have less surface area and a higher body mass​
 
+-   There have been many studies that support Allen's Rule (LIST SOURCES)
+
 -   However, some studies have shown this rule to be inaccurate (Alho J, et al. 2010)​
 
 -   We set out to test **Allen's Rule** using an existing data set of bird morphological traits
 
-    ![lmr = -0.13, altitude = 1 1188 m](https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg "Masked Duck (Nomonyx dominicus)")
+    <img src="https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg" title="https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg" width="400"/>
 
 ## Methods
 
