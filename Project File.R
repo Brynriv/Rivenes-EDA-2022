@@ -10,7 +10,6 @@ library(ggrepel)
 # read data ---------------------------------------------------------------
 
 
-
 file_url<-"https://esajournals.onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1002%2Fecy.2647&file=ecy2647-sup-0001-DataS1.zip"
 file_name <- basename(file_url)
 
@@ -35,7 +34,7 @@ bird_data <- rename(bird_data,
                     wing_length_mm = Wing_length.mm.
                     )
 
-#new variable
+#add new variable
 length_vs_mass <- select(bird_data, body_length_mm, body_mass_g)
 
 length_vs_mass <- mutate(bird_data, 
@@ -43,6 +42,7 @@ length_vs_mass <- mutate(bird_data,
 
 
 # plots -------------------------------------------------------------------
+
 
 #testing for normal distribution of length_mass_ratio
 ggplot(data = length_vs_mass) +
@@ -102,6 +102,7 @@ length_vs_mass %>%
     x = body_length_mm, 
     y = body_mass_g)
   )
+
 #length mass plot for Passeriformes
 length_vs_mass %>% 
   filter(Order=="Passeriformes") %>% 

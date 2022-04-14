@@ -1,33 +1,67 @@
 
-# Title
+**Notes for code:**
+
+-   **show tidied code, spaces, comments, make it readable, be
+    CONSISTANT**
+
+-   **filter, mutate, summarize, join (combine data), variables in code
+    and show created variables**
+
+-   **use: bar chart, histogram, multiple variables (scatter plot).
+    Label well.**
+
+-   **Do a mean and a confidence interval**
+
+-   **Include a readme with abstract, author name, and table of
+    content**
+
+# **Morphological Analysis of Birds in the Atlantic Forest of South America**
 
 Casey Perkins, Bryn Rivenes
 
-Dr. Chris Merkord
-
 ## Introduction
 
--   We decided to explore Allen’s rule: body surface-area-to-volume
-    ratio for animals varies with the average temperature of a
-    creature’s habitat.
+-   **Allen’s Rule**: body surface area to volume ratio for animals
+    varies with the average temperature of a creature’s habitat  (Allen
+    A, 1877)​
 
--   We used data on birds fount in the Atlantic Forest of South America
-    to explore the connection between altitude and length to mass ratios
+-   The lower the surface area, the less heat can escape, so animals at
+    higher altitudes should have less surface area and a higher body
+    mass​
 
-    ![lmr = -0.13, altitude = 1 1188
-    m](https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg "Masked Duck (Nomonyx dominicus)")
+-   There have been many studies that support Allen’s Rule (LIST
+    SOURCES)
+
+-   However, some studies have shown this rule to be inaccurate (Alho
+    J, et al. 2010)​
+
+-   We set out to test **Allen’s Rule** using an existing data set of
+    bird morphological traits
+
+    <img src="https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg" title="https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg" alt="Nomonyx dominicus (Masked Duck)" width="400"/>
 
 ## Methods
 
--   Our data came from The Atlantic Bird’s Data Set; a data set complied
-    over decades by many scientists.
+-   Our data came from **The Atlantic Bird’s Data Set**; a data set of
+    bird morphological traits and locations complied over decades by
+    many scientists through museum collections, online data bases,
+    published sources, and unpublished reports for data
+    analysis (Hasui E, et al. 2017)​
 
--   In bird data collection, birds are typically caught in a mist net
+-   It includes data from **72,483 individual birds** and **780
+    species**​
 
-    ![](https://talesfromawanderingalbatross.files.wordpress.com/2013/06/mgwa-in-mist-net.jpg)
+-   The Atlantic Forest is located mostly on the East coast
+    of Brazil, with some of it stretching into Argentina and Paraguay​
 
--   Then various measurements are taken. We are interested in the length
-    to mass ratio
+-   We use the length to mass ratio as a proxy for body
+    surface-area-to-volume ratio
+
+    <img src="https://talesfromawanderingalbatross.files.wordpress.com/2013/06/mgwa-in-mist-net.jpg" alt="One way to collect bird data is through catching birds in bird nets." width="291"/>
+
+-   **discuss getting data/how it was collected and analyzing data**
+
+-   **discuss/cite R and pkgs**
 
 ## Results
 
@@ -44,8 +78,8 @@ very messy data
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
--   We corrected the skew in our data by taking the natural log of our
-    data points
+-   We corrected the skew in our data by transforming it by taking the
+    natural log of our data points
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->![](My-Poster_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->
 
@@ -62,27 +96,41 @@ very messy data
     birds found below 1000 m = 5.2. A Welch’s Two Sample t-test found
     t(76) = 3.6, p =0.0005.
 
+-   **Text describing what we did and what it means then back up with
+    figure/graph**
+
+-   **add figure legends to each graph (Fig. 1)**
+
 ## Discussion
 
--   Our analysis suggests that the greater the altitude a bird species
-    is found at, the greater their mean lmr is.
+-   We predicted length mass ratio would decrease with elevation
+    however, our analysis and t-test show an increase in length mass
+    ratio with increased elevation​
 
--   This trend follows the trend seen in birds examined latitudinally as
-    seen in many other research projects on birds.
+-   This is the exact **opposite** of what we would expect to see
+    according to **Allen’s Rule** ​
 
--   Essentially, what we see is that birds that are fat and fluffy tend
-    to live at higher elevations that birds that are long and skinny.
+-   Other studies have found similar results that contradict **Allen’s
+    Rule** and suggest that the body surface area to volume ratio has a
+    genetic basis rather than an environmental one (Alho J, et al. 2010)
 
--   A possible explination for this is that birds that found in more
-    extreme climates (higher elevations) are more adapted for their
-    specific environment.
+-   **Restate findings briefly**
 
--   Allen’s rule suggest that any morphological trait (such as appendage
-    thickness or hair length) should also vary based on temperature. A
-    future analysis we would like to do is see if this trend holds true
-    for other morphological bird characteristics.  
+-   **talk about what is MEANS**
+
+-   **talk about what we could do with these findings in the
+    future/future experiments**
 
 ## References
+
+-   ALHO, J.S., HERCZEG, G., LAUGEN, A.T., RÄSÄNEN, K., LAURILA, A. and
+    MERILÄ, J. (2011), Allen’s rule revisited: quantitative genetics of
+    extremity length in the common frog along a latitudinal gradient.
+    Journal of Evolutionary Biology, 24: 59-70.
+    <https://doi.org/10.1111/j.1420-9101.2010.02141.x>
+
+-   Allen, Joel Asaph (1877). “The influence of Physical conditions in
+    the genesis of species”. Radical Review. 1: 108–140.
 
 -   Blackburn T, Ruggiero A. Latitude, elevation and body mass variation
     in Andean passerine birds. Global Ecology and Biography 2001 (cited
@@ -115,6 +163,10 @@ very messy data
     in Geographic Variation in Body Mass and Wing Length in a Passerine
     Bird. Avian Res. 2017 (cited 2022 Feb 19); 8, 1.
 
+-   **add citations for R, and pkgs used. (and maybe images?)**
+
+-   **cite every source in the text**
+
 ## Acknowledgments
 
 -   We would like to thank the original authors of the Atlantic Birds
@@ -123,5 +175,5 @@ very messy data
     reports, as well as the people out out in the field who originally
     collected this data.
 
--   We also would like to thank Dr. Merkord for his guidance with coding
-    and data analyse.
+-   We also would like to thank Dr. Chris Merkord for his guidance with
+    coding and data analyse.

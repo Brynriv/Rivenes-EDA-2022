@@ -66,19 +66,21 @@ Casey Perkins, Bryn Rivenes
 
 -   We set out to test **Allen's Rule** using an existing data set of bird morphological traits
 
-    <img src="https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg" title="https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg" width="400"/>
+    <img src="https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg" title="https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg" alt="Nomonyx dominicus (Masked Duck)" width="400"/>
 
 ## Methods
 
--   Our data came from **The Atlantic Bird's Data Set**; a data set of bird morphological traits and locations complied over decades by many scientists through museum collections, online data bases, published sources, and unpublished reports for data analysis (Hasui E, et al. 2017)​
+-   The Atlantic Forest is located mostly on the East coast of Brazil, with some of it stretching into Argentina and Paraguay.
 
--   It includes data from **72,483 individual birds** and **780 species**​
-
--   The Atlantic Forest is located mostly on the East coast of Brazil, with some of it stretching into Argentina and Paraguay​
+-   ​Our data came from **The Atlantic Bird's Data Set**; a data set of bird morphological traits and locations complied over decades by many scientists through museum collections, online data bases, published sources, and unpublished reports for data analysis (Hasui E, et al. 2017). It includes data from **72,483 individual birds** and **780 species**​.
 
 -   We use the length to mass ratio as a proxy for body surface-area-to-volume ratio
 
-    ![](https://talesfromawanderingalbatross.files.wordpress.com/2013/06/mgwa-in-mist-net.jpg)
+-   We used R in addition to the Tidyverse and Ggrepel packages to graph and analyze this data to compare the length to mass ratio of these birds vs altitude at which the specimen was found.
+
+-   We later focused on just the order Passeriformes, and then narrowed it down even farther to just the genus Turdus to try and get a more accurate result.
+
+    <img src="https://talesfromawanderingalbatross.files.wordpress.com/2013/06/mgwa-in-mist-net.jpg" alt="One way to collect bird data is through catching birds in bird nets." width="291"/>
 
 -   **discuss getting data/how it was collected and analyzing data**
 
@@ -94,8 +96,7 @@ ggplot(data = length_vs_mass) +
     x = altitude)) +
   labs(x = "Altitude",
        y = "Length:Mass")+
-  theme_gray(base_size = 24) +
-ggsave("lmratio_altitude_scatter.png", units="in", height=8, width=12, dpi = 300)
+  theme_gray(base_size = 24) 
 ```
 
 Figure 1. We ran our mass to length ratio with altitude and found we had very messy data
