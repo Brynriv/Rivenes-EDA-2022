@@ -1,20 +1,4 @@
 
-**Notes for code:**
-
--   **show tidied code, spaces, comments, make it readable, be
-    CONSISTANT**
-
--   **filter, mutate, summarize, join (combine data), variables in code
-    and show created variables**
-
--   **use: bar chart, histogram, multiple variables (scatter plot).
-    Label well.**
-
--   **Do a mean and a confidence interval**
-
--   **Include a readme with abstract, author name, and table of
-    content**
-
 # **Morphological Analysis of Birds in the Atlantic Forest of South America**
 
 Casey Perkins, Bryn Rivenes
@@ -38,68 +22,81 @@ Casey Perkins, Bryn Rivenes
 -   We set out to test **Allen’s Rule** using an existing data set of
     bird morphological traits
 
-    <img src="https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg" title="https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg" alt="Nomonyx dominicus (Masked Duck)" width="400"/>
+    <img src="https://www.peruaves.org/wp-content/uploads/2019/04/blue_dacnis-1.jpg" alt="Photo of a Blue Dacnis (Dacnis cayana) (Photo from Jarbas Mattos)" width="321"/><img src="https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg" title="https://nas-national-prod.s3.amazonaws.com/Masked_Duck_KK_APA_2011_18324_145923_RonBielefeld.jpg" alt="Photo of a Masked Duck (Nomonyx dominicus) (photo from Ron Bielefeld/Audubon Photography Awards)" width="328"/>
+
+###### Image 1: Photo of a Blue Dacnis (Dacnis cayana) (Photo from Jarbas Mattos)
+
+###### Image 2: Photo of a Masked Duck (Nomonyx dominicus) (Photo from Ron Bielefeld/Audubon Photography Awards)
 
 ## Methods
 
--   Our data came from **The Atlantic Bird’s Data Set**; a data set of
+-   The Atlantic Forest is located mostly on the East coast
+    of Brazil, with some of it stretching into Argentina and Paraguay.
+
+-   ​Our data came from **The Atlantic Bird’s Data Set**; a data set of
     bird morphological traits and locations complied over decades by
     many scientists through museum collections, online data bases,
     published sources, and unpublished reports for data
-    analysis (Hasui E, et al. 2017)​
+    analysis (Hasui E, et al. 2017). It includes data from **72,483
+    individual birds** and **780 species**​.
 
--   It includes data from **72,483 individual birds** and **780
-    species**​
-
--   The Atlantic Forest is located mostly on the East coast
-    of Brazil, with some of it stretching into Argentina and Paraguay​
+-   Using R and R Studio along with the packages tidyverse and ggrepel,
+    we examined this data.
 
 -   We use the length to mass ratio as a proxy for body
     surface-area-to-volume ratio
 
-    <img src="https://talesfromawanderingalbatross.files.wordpress.com/2013/06/mgwa-in-mist-net.jpg" alt="One way to collect bird data is through catching birds in bird nets." width="291"/>
+-   We used R in addition to the Tidyverse and Ggrepel packages to graph
+    and analyze this data to compare the length to mass ratio of these
+    birds vs altitude at which the specimen was found.
 
--   **discuss getting data/how it was collected and analyzing data**
+-   We later focused on just the order Passeriformes, and then narrowed
+    it down even farther to just the genus Turdus to try and get a more
+    accurate result.
 
--   **discuss/cite R and pkgs**
+    <img src="https://journals.plos.org/plosone/article/figure/image?size=large&amp;id=10.1371/journal.pone.0107792.g001" title="Map" alt="A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)" width="186"/><img src="https://talesfromawanderingalbatross.files.wordpress.com/2013/06/mgwa-in-mist-net.jpg" alt="One way to collect bird data is through catching birds in bird nets. (photo from animalia7)" width="291"/>
+
+###### Photo 3: A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)
+
+###### Photo 4: One way to collect bird data is through catching birds in bird nets. (Photo of a MacGillivray’s Warbler in a mist net) (Photo
+
+from animalia7)
 
 ## Results
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
-Figure 1. We ran our mass to length ratio with altitude and found we had
-very messy data
+###### Figure 1: We ran our mass to length ratio with altitude and found we had very messy data
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
+###### Figure 2: We then looked at the same graph but with each order represented by a color and still did not see any major correlations.
+
 ![](My-Poster_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
--   Here we noticed that our data were severely right skewed
+###### Figure 3: Here we wanted to see if our data had a normal distribution and instead found that it was severely right skewed.
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
--   We corrected the skew in our data by transforming it by taking the
-    natural log of our data points
+###### Figure 4: We then examined this histogram for each order.
 
-![](My-Poster_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->![](My-Poster_files/figure-gfm/unnamed-chunk-5-2.png)<!-- -->
+![](My-Poster_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
--   We plotted the mean lmr for each genus/species and saw a slight
-    upward trend which intensified when we looked exclusivly at
-    altitudes higher than 1000
+###### Figure 5: We corrected the skew in our data by transforming it by taking the natural log of the length mass ratios (lmr).
 
-    ![](My-Poster_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+As we can see from Figure 4 and 5, the majority of our data seems to
+come from one order, the Passeriformes. Because of this, we decided to
+focus on just this group.
 
--   We took the mean lmr of birds found over 1000 m and birds found
-    under 1000 and found the means were different
+![](My-Poster_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->![](My-Poster_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->
 
--   The mean lmr of birds found above 1000 m = 7.9 while the mean lmr of
-    birds found below 1000 m = 5.2. A Welch’s Two Sample t-test found
-    t(76) = 3.6, p =0.0005.
+###### Figure 6: We plotted the mean lmr for each genus/species and saw a slight upward trend which intensified when we looked exclusivly at altitudes higher than 1000
 
--   **Text describing what we did and what it means then back up with
-    figure/graph**
+![](My-Poster_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
--   **add figure legends to each graph (Fig. 1)**
+###### We took the mean lmr of birds found over 1000 m and birds found under 1000 and found the means were different
+
+###### The mean lmr of birds found above 1000 m = 7.9 while the mean lmr of birds found below 1000 m = 5.2. A Welch’s Two Sample t-test found t(76) = 3.6, p =0.0005.
 
 ## Discussion
 
@@ -112,14 +109,17 @@ very messy data
 
 -   Other studies have found similar results that contradict **Allen’s
     Rule** and suggest that the body surface area to volume ratio has a
-    genetic basis rather than an environmental one (Alho J, et al. 2010)
+    genetic basis rather than an environmental one (Alho J, et
+    al. 2010).
 
--   **Restate findings briefly**
+-   In future studies, we would be very interested in exploring the
+    reason these birds do not seem to follow Allen’s Rule. For example,
+    if we were able to find out which bird species are migratory and
+    then exclude them from the data to just look at permanent species
+    and see if they follow the rule.
 
--   **talk about what is MEANS**
-
--   **talk about what we could do with these findings in the
-    future/future experiments**
+-   It would also be interesting to explore why Allen’s Rule overall,
+    seems to be applicable in some areas, but not others.
 
 ## References
 
@@ -159,13 +159,21 @@ very messy data
     Evolution in an Extreme Environment. Oikos. 2995 (cited 2022 Feb
     18);73(2):237-250.
 
+-   Slowikowski *et al.*, (2021). ggrepel.
+    <https://githubcom/slowkow/ggrepel>
+
 -   Sun Y, Li M, Song G, Lei F, Li D, Wu Y. The Role of Climate Factors
     in Geographic Variation in Body Mass and Wing Length in a Passerine
     Bird. Avian Res. 2017 (cited 2022 Feb 19); 8, 1.
 
--   **add citations for R, and pkgs used. (and maybe images?)**
+-   RStudio Team (2019), RStudio: Integrated Development for R. RStudio,
+    Inc., Boston, MA, URL <http://www>. rstudio.com/.
 
--   **cite every source in the text**
+-   Wickham *et al*., (2019). Welcome to the tidyverse. Jounal of Open
+    Source Software, 4(43), 1686, <http://doi.org/10.21105/joss.01686>
+
+-   Wickham H (2016). ggplot2: Elegant Graphics for Data Analysis.
+    Springer-Verlag New York.
 
 ## Acknowledgments
 
