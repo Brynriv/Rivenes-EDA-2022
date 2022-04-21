@@ -105,7 +105,7 @@ ggplot(data = length_vs_mass) +
   )
 ```
 
-###### Figure 2: We then looked at the same graph but with each order represented by a color and still did not see any major correlations. 
+###### Figure 2: We then looked at the same graph but with each order represented by a color and still did not see any major correlations.
 
 ```{r echo=FALSE, fig.height=3, fig.width=5, warning=FALSE}
 #testing for normal distribution of length_mass_ratio
@@ -114,7 +114,7 @@ ggplot(data = length_vs_mass) +
     x = length_mass_ratio), bins = 50, boundary = 0)
 ```
 
-###### Figure 3: Here we wanted to see if our data had a normal distribution and instead found that it was severely right skewed.
+###### Figure 3: A frequency chart of all length mass ratios (lmr) from our data, which shows a strong right skew. 
 
 ```{r}
 #seperate by order
@@ -124,7 +124,7 @@ ggplot(data = length_vs_mass) +
   facet_wrap(~Order, ncol = 5)
 ```
 
-###### Figure 4: We then examined this histogram for each order. 
+###### Figure 4: Frequency charts of length_mass_ratio (lmr) separated out by orders. 
 
 ```{r, echo=FALSE, warning = FALSE}
 #log of length_mass_ratio to correct right skew 
@@ -137,9 +137,24 @@ ggplot(data = length_vs_mass) +
   facet_wrap(~Order)
 ```
 
-###### Figure 5: We corrected the skew in our data by transforming it by taking the natural log of the length mass ratios (lmr).
+###### Figure 5: Frequency charts for the log of the lmr, separated out by order. 
 
-As we can see from Figure 4 and 5, the majority of our data seems to come from one order, the Passeriformes. Because of this, we decided to focus on just this group.
+As we can see from Figure 4 and 5, the majority of our data seems to come from one order, the Passeriformes. A few other groups (such as Anseriformes) could be skewing our data. Because of this, we decided to focus on just this one group.
+
+```{r, echo=FALSE, warning = FALSE}
+#mean of ln_lmr vs altitude 
+length_vs_mass %>% 
+  filter(Genus == "Turdus") %>% 
+  ggplot(mapping = aes(
+    y = ln_lmr, 
+    x = altitude,
+    color = Species)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  xlim(c(0,1700))
+```
+
+###### Figure 6: Examining the log of the lmr vs altitude for each species in the genus Turdus, we were able to see a slight positive correlation. 
 
 ```{r, echo=FALSE, warning = FALSE}
 length_vs_mass %>% 
@@ -166,7 +181,9 @@ length_vs_mass %>%
   geom_smooth(method = "lm")
 ```
 
-###### Figure 6: We plotted the mean lmr for each genus/species and saw a slight upward trend which intensified when we looked exclusivly at altitudes higher than 1000
+###### Figure 6 and 7: Two scatter plots of the log of mean lmr for each species in the family Furnariidae. Figure 7 goes into more detail and exmines this group from only above 1000 m. The blue line in both graphs is a regression line using geom_smooth. 
+
+We also looked at the ln(lmr) vs altitude for another group under Passeriformes (the family Furnariidae), we did not see much of a correlation. However, when we examined this family from above an altitude of 1000 meters, we can clearly see a positive correlation between the log of the lmr and altitude.
 
 ```{r, echo=FALSE, warning = FALSE}
 passeriformes_means<-
@@ -199,7 +216,9 @@ passeriformes_means %>%
 
 ```
 
-###### We took the mean lmr of birds found over 1000 m and birds found under 1000 and found the means were different
+###### Figure : two frequency charts for the ln(lmr) for all species in the order Passeriformes both above and below an altitude of 1000 meters. The red line indicates the mean of each set of data. 
+
+We examined the counts of lmr for all passeriformes species both above and below 1000 m and we could clearly see that there was a difference in the two means.
 
 ```{r, include=FALSE, warning = FALSE}
 passeriformes_means %>% 
@@ -212,11 +231,11 @@ exp(2.067247)
 exp(1.647261)
 ```
 
-###### The mean lmr of birds found above 1000 m = 7.9 while the mean lmr of birds found below 1000 m = 5.2. A Welch's Two Sample t-test found t(76) = 3.6, p =0.0005.
+The mean lmr of birds found above 1000 m = 7.9 while the mean lmr of birds found below 1000 m = 5.2. A Welch's Two Sample t-test found t(76) = 3.6, p =0.0005.
 
 ## Discussion
 
--   We predicted length mass ratio would decrease with elevation however, our analysis and t-test show an increase in length mass ratio with increased elevation​
+-   We predicted length mass ratio would decrease with elevation however, our analysis and t-test show an increase in length mass ratio with an increase in elevation​
 
 -   This is the exact **opposite** of what we would expect to see according to **Allen's Rule** ​
 

@@ -58,9 +58,7 @@ Casey Perkins, Bryn Rivenes
 
 ###### Photo 3: A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)
 
-###### Photo 4: One way to collect bird data is through catching birds in bird nets. (Photo of a MacGillivray’s Warbler in a mist net) (Photo
-
-from animalia7)
+###### Photo 4: One way to collect bird data is through catching birds in bird nets. (Photo of a MacGillivray’s Warbler in a mist net) (Photo from animalia7)
 
 ## Results
 
@@ -85,24 +83,41 @@ from animalia7)
 ###### Figure 5: We corrected the skew in our data by transforming it by taking the natural log of the length mass ratios (lmr).
 
 As we can see from Figure 4 and 5, the majority of our data seems to
-come from one order, the Passeriformes. Because of this, we decided to
-focus on just this group.
+come from one order, the Passeriformes. A few other groups (such as
+Anseriformes) could be skewing our data. Because of this, we decided to
+focus on just this one group.
 
-![](My-Poster_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->![](My-Poster_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->
+![](My-Poster_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
-###### Figure 6: We plotted the mean lmr for each genus/species and saw a slight upward trend which intensified when we looked exclusivly at altitudes higher than 1000
+###### Figure 6: Examining the log of the lmr vs altitude for each species in the genus Turdus, we were able to see a slight positive correlation.
 
-![](My-Poster_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](My-Poster_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->![](My-Poster_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->
 
-###### We took the mean lmr of birds found over 1000 m and birds found under 1000 and found the means were different
+###### Figure 6: We plotted the mean lmr for each species in the family Furnariidae and saw a slight upward trend which intensified when we looked exclusively at altitudes higher than 1000 meters.
 
-###### The mean lmr of birds found above 1000 m = 7.9 while the mean lmr of birds found below 1000 m = 5.2. A Welch’s Two Sample t-test found t(76) = 3.6, p =0.0005.
+We also looked at the ln(lmr) vs altitude for another group under
+Passeriformes (the family Furnariidae), we did not see much of a
+correlation. However, when we examined this family from above an
+altitude of 1000 meters, we can clearly see a positive correlation
+between the log of the lmr and altitude.
+
+![](My-Poster_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+
+###### Figure : two frequency charts for the ln(lmr) for all species in the order Passeriformes both above and below an altitude of 1000 meters. The red line indicates the mean of each set of data.
+
+We examined the counts of lmr for all passeriformes species both above
+and below 1000 m and we could clearly see that there was a difference in
+the two means.
+
+The mean lmr of birds found above 1000 m = 7.9 while the mean lmr of
+birds found below 1000 m = 5.2. A Welch’s Two Sample t-test found t(76)
+= 3.6, p =0.0005.
 
 ## Discussion
 
 -   We predicted length mass ratio would decrease with elevation
     however, our analysis and t-test show an increase in length mass
-    ratio with increased elevation​
+    ratio with an increase in elevation​
 
 -   This is the exact **opposite** of what we would expect to see
     according to **Allen’s Rule** ​
