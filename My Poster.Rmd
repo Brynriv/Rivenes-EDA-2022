@@ -74,11 +74,15 @@ Casey Perkins, Bryn Rivenes
 
 -   We later focused on just the order Passeriformes, and then narrowed it down even farther to just the genus Turdus to try and get a more accurate result.
 
-    <img src="https://journals.plos.org/plosone/article/figure/image?size=large&amp;id=10.1371/journal.pone.0107792.g001" title="Map" alt="A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)" width="186"/><img src="https://talesfromawanderingalbatross.files.wordpress.com/2013/06/mgwa-in-mist-net.jpg" alt="One way to collect bird data is through catching birds in bird nets. (photo from animalia7)" width="291"/>
+    ###### <img src="https://journals.plos.org/plosone/article/figure/image?size=large&amp;id=10.1371/journal.pone.0107792.g001" title="Map" alt="A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)" width="186"/><img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/BirdMorphometrics.jpg" alt="An illistration demonstrating how scientist measure birds (Image by Anton Reichenow)" width="249"/>Image 3: A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)
 
-###### Photo 3: A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)
+    ###### Image 4: An illistration demonstrating how scientist measure birds (Image by Anton Reichenow)
 
-###### Photo 4: One way to collect bird data is through catching birds in bird nets. (Photo of a MacGillivray's Warbler in a mist net) (Photo from animalia7)
+    ######  <img src="https://talesfromawanderingalbatross.files.wordpress.com/2013/06/mgwa-in-mist-net.jpg" alt="One way to collect bird data is through catching birds in bird nets. (photo from animalia7)" width="291"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Rufous-bellied_thrush_%28Turdus_rufiventris%29.JPG/1024px-Rufous-bellied_thrush_%28Turdus_rufiventris%29.JPG" alt="A photo of a Rufous-bellied thrush (Turdus rufiventris) (Photo by Charles J. Sharp)" width="291"/>
+
+###### Image 5: One way to collect bird data is through catching birds in bird nets. (Photo of a MacGillivray's Warbler in a mist net) (Photo from animalia7)
+
+###### Image 6: A photo of a Rufous-bellied thrush (Turdus rufiventris) (Photo by Charles J. Sharp)
 
 ## Results
 
@@ -101,7 +105,8 @@ ggplot(data = length_vs_mass) +
   geom_point(mapping = aes(
     y = length_mass_ratio, 
     x = altitude, 
-    color = Order), 
+    color = Order),
+    alpha = 0.4
   )
 ```
 
@@ -114,7 +119,7 @@ ggplot(data = length_vs_mass) +
     x = length_mass_ratio), bins = 50, boundary = 0)
 ```
 
-###### Figure 3: A frequency chart of all length mass ratios (lmr) from our data, which shows a strong right skew. 
+###### Figure 3: A frequency chart of all length mass ratios (lmr) from our data, which shows a strong right skew.
 
 ```{r}
 #seperate by order
@@ -124,7 +129,7 @@ ggplot(data = length_vs_mass) +
   facet_wrap(~Order, ncol = 5)
 ```
 
-###### Figure 4: Frequency charts of length_mass_ratio (lmr) separated out by orders. 
+###### Figure 4: Frequency charts of length_mass_ratio (lmr) separated out by orders.
 
 ```{r, echo=FALSE, warning = FALSE}
 #log of length_mass_ratio to correct right skew 
@@ -137,7 +142,7 @@ ggplot(data = length_vs_mass) +
   facet_wrap(~Order)
 ```
 
-###### Figure 5: Frequency charts for the log of the lmr, separated out by order. 
+###### Figure 5: Frequency charts for the log of the lmr, separated out by order.
 
 As we can see from Figure 4 and 5, the majority of our data seems to come from one order, the Passeriformes. A few other groups (such as Anseriformes) could be skewing our data. Because of this, we decided to focus on just this one group.
 
@@ -154,7 +159,7 @@ length_vs_mass %>%
   xlim(c(0,1700))
 ```
 
-###### Figure 6: Examining the log of the lmr vs altitude for each species in the genus Turdus, we were able to see a slight positive correlation. 
+###### Figure 6: Examining the log of the lmr vs altitude for each species in the genus Turdus, we were able to see a slight positive correlation.
 
 ```{r, echo=FALSE, warning = FALSE}
 length_vs_mass %>% 
@@ -181,7 +186,7 @@ length_vs_mass %>%
   geom_smooth(method = "lm")
 ```
 
-###### Figure 6 and 7: Two scatter plots of the log of mean lmr for each species in the family Furnariidae. Figure 7 goes into more detail and exmines this group from only above 1000 m. The blue line in both graphs is a regression line using geom_smooth. 
+###### Figure 7 and 8: Two scatter plots of the log of mean lmr for each species in the family Furnariidae. Figure 7 goes into more detail and exmines this group from only above 1000 m. The blue line in both graphs is a regression line using geom_smooth.
 
 We also looked at the ln(lmr) vs altitude for another group under Passeriformes (the family Furnariidae), we did not see much of a correlation. However, when we examined this family from above an altitude of 1000 meters, we can clearly see a positive correlation between the log of the lmr and altitude.
 
@@ -216,7 +221,7 @@ passeriformes_means %>%
 
 ```
 
-###### Figure : two frequency charts for the ln(lmr) for all species in the order Passeriformes both above and below an altitude of 1000 meters. The red line indicates the mean of each set of data. 
+###### Figure 9: two frequency charts for the ln(lmr) for all species in the order Passeriformes both above and below an altitude of 1000 meters. The red line indicates the mean of each set of data.
 
 We examined the counts of lmr for all passeriformes species both above and below 1000 m and we could clearly see that there was a difference in the two means.
 

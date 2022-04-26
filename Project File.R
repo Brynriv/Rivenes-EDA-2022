@@ -1,13 +1,13 @@
 
 
-# load packages -----------------------------------------------------------
+# Load Packages -----------------------------------------------------------
 
 
 library(tidyverse)
 library(ggrepel)
 
 
-# read data ---------------------------------------------------------------
+# Read Data ---------------------------------------------------------------
 
 
 file_url<-"https://esajournals.onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1002%2Fecy.2647&file=ecy2647-sup-0001-DataS1.zip"
@@ -23,7 +23,7 @@ unzip("bird_data/bird_data.zip", overwrite = TRUE, exdir = "bird_data")
 bird_data<-read_csv("bird_data/ATLANTIC_BIRD_TRAITS_completed_2018_11_d05.csv")
 
 
-# clean up data -----------------------------------------------------------
+# Clean Up Data -----------------------------------------------------------
 
 
 #renaming variables 
@@ -41,7 +41,7 @@ length_vs_mass <- mutate(bird_data,
                          length_mass_ratio = body_length_mm / body_mass_g)
 
 
-# plots -------------------------------------------------------------------
+# Plots -------------------------------------------------------------------
 
 
 #testing for normal distribution of length_mass_ratio
@@ -74,7 +74,7 @@ ggplot(data = length_vs_mass) +
   facet_wrap(~Order)
 
 
-# ln of data ----------------------------------------------------------
+# ln of Data ----------------------------------------------------------
 
 #log of length_mass_ratio to correct right skew 
 length_vs_mass <-mutate(length_vs_mass, ln_lmr = log(length_mass_ratio))
@@ -92,7 +92,7 @@ ggplot(data = length_vs_mass) +
   facet_wrap(~Order,scales = "free_y")
 
 
-# length mass lmr plots ---------------------------------------------------
+# Length Mass (lmr) Plots ---------------------------------------------------
 
 #length mass plot of Anseriformes 
 length_vs_mass %>% 
@@ -149,7 +149,7 @@ length_vs_mass %>%
   geom_smooth(method = "loess")
 
 
-# passeriformes mean data -------------------------------------------------
+# Passeriformes Mean Data -------------------------------------------------
 
 #fit line with altitude > 1000 Passeriformes
 length_vs_mass %>% 
@@ -246,7 +246,7 @@ passeriformes_means<-
   print()
 
 
-# t-tests -----------------------------------------------------------------
+# T-Tests -----------------------------------------------------------------
 
 #filter smaller and larger means
 
@@ -275,8 +275,7 @@ passeriformes_means %>%
   t.test(ln_lmr ~ hilo, data = .)
 
 
-
-# antilog of means --------------------------------------------------------
+# Antilog of Means --------------------------------------------------------
 
 #antilog of hi
 exp(2.067247)
@@ -284,3 +283,116 @@ exp(2.067247)
 #antilog of low
 exp(1.647261)
 
+
+
+-----------------------------------------------------------------
+
+# Wing Length ---------------------------------------------------
+
+length_vs_mass <- mutate(bird_data, 
+                         wings_to_mass = wing_length_mm / body_mass_g)
+
+#testing for normal distribution of wing length
+ggplot(data = length_vs_mass) +
+  geom_histogram(mapping = aes(
+    x = wing_length_mm), bins = 50, boundary = 0)
+
+#log of wing_length_mm to correct right skew 
+length_vs_mass <-mutate(length_vs_mass, ln_wings = log(wing_length_mm))
+
+
+#Wing Length log ------------------------------------------------
+
+#testing for normal distribution of ln_wings
+ggplot(data = length_vs_mass) +
+  geom_histogram(mapping = aes(
+    x = ln_wings), bins = 100)
+
+#testing for normal distribution of ln_wings
+ggplot(data = length_vs_mass) +
+  geom_histogram(mapping = aes(
+    x = ln_wings), bins = 100)+ 
+  facet_wrap(~Order)
+
+
+#Wing Length vs Altitude ----------------------------------------
+
+#ggplot Wing Length vs Altitude
+ggplot(data = bird_data) +
+  geom_point(mapping = aes(
+    y = wing_length_mm,
+    x = altitude))
+
+#ggplot Wing Length vs Altitude (color)
+ggplot(data = bird_data) +
+  geom_point(mapping = aes(
+    y = wing_length_mm,
+    x = altitude,
+    color = Order),
+    alpha = 0.4)
+
+#wing length vs altitude Passeriformes
+length_vs_mass %>% 
+  filter(Order=="Passeriformes") %>% 
+  ggplot() +
+  geom_point(mapping = aes(
+    x = wing_length_mm, 
+    y = altitude)
+  )
+
+#mean of ln_lmr vs altitude (Turdus) 
+length_vs_mass %>% 
+  filter(Genus == "Turdus") %>% 
+  ggplot(mapping = aes(
+    y = ln_wings, 
+    x = altitude,
+    color = Species)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  xlim(c(0,1700))
+
+
+#ggplot Wing Length to Mass vs Altitude (color)
+ggplot(data = length_vs_mass) +
+  geom_point(mapping = aes(
+    y = wings_to_mass,
+    x = altitude,
+    color = Order),
+    alpha = 0.4)
+
+#wing length to mass vs altitude Passeriformes
+length_vs_mass %>% 
+  filter(Order=="Passeriformes") %>% 
+  ggplot() +
+  geom_point(mapping = aes(
+    x = wings_to_mass, 
+    y = altitude)
+  )
+
+
+# Geom smooth Wings--------------------------------------------------
+
+#geom smooth ln_wings vs altitude
+length_vs_mass %>% 
+  filter(
+    Order=="Passeriformes",
+    Family=="Furnariidae",
+  ) %>% 
+  ggplot(mapping = aes(
+    y = ln_wings, 
+    x = altitude)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+#geom smooth ln_wings above 1000m
+length_vs_mass %>% 
+  filter(
+    Order=="Passeriformes",
+    Family=="Furnariidae",
+    altitude > 1000
+  ) %>% 
+  ggplot(mapping = aes(
+    y = ln_wings, 
+    x = altitude)) +
+  geom_point() +
+  geom_smooth(method = "lm")
