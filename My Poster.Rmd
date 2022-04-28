@@ -66,7 +66,7 @@ Casey Perkins, Bryn Rivenes
 
 -   ​Our data came from **The Atlantic Bird's Data Set**; a data set of bird morphological traits and locations complied over decades by many scientists through museum collections, online data bases, published sources, and unpublished reports for data analysis (Hasui E, et al. 2017). It includes data from **72,483 individual birds** and **780 species**​.
 
--   Using R and R Studio along with the packages tidyverse and ggrepel, we examined this data.
+-   Using R and R Studio (RStudio Team, 2019) along with the packages tidyverse (Wickham *et al*., 2019), ggrepel (Slowikowski *et al.*, 2021), and performance (Lüdecke, Ben-Shachar, Patil, Waggoner, Makowski, 2021), we examined this data.
 
 -   We use the length to mass ratio as a proxy for body surface-area-to-volume ratio
 
@@ -74,11 +74,15 @@ Casey Perkins, Bryn Rivenes
 
 -   We later focused on just the order Passeriformes, and then narrowed it down even farther to just the genus Turdus to try and get a more accurate result.
 
-    ###### <img src="https://journals.plos.org/plosone/article/figure/image?size=large&amp;id=10.1371/journal.pone.0107792.g001" title="Map" alt="A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)" width="186"/><img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/BirdMorphometrics.jpg" alt="An illistration demonstrating how scientist measure birds (Image by Anton Reichenow)" width="249"/>Image 3: A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)
+-   I then wanted to explore if wing length was affected by altitude, as some researchers have found in other studies (Landmann and Winding, 1995) as well as bill length (Symonds, Tattersall, 2010).
+
+    ###### <img src="https://journals.plos.org/plosone/article/figure/image?size=large&amp;id=10.1371/journal.pone.0107792.g001" title="Map" alt="A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)" width="186"/><img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/BirdMorphometrics.jpg" alt="An illistration demonstrating how scientist measure birds (Image by Anton Reichenow)" width="249"/>
+
+    ###### Image 3: A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)
 
     ###### Image 4: An illistration demonstrating how scientist measure birds (Image by Anton Reichenow)
 
-    ######  <img src="https://talesfromawanderingalbatross.files.wordpress.com/2013/06/mgwa-in-mist-net.jpg" alt="One way to collect bird data is through catching birds in bird nets. (photo from animalia7)" width="291"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Rufous-bellied_thrush_%28Turdus_rufiventris%29.JPG/1024px-Rufous-bellied_thrush_%28Turdus_rufiventris%29.JPG" alt="A photo of a Rufous-bellied thrush (Turdus rufiventris) (Photo by Charles J. Sharp)" width="291"/>
+    ###### <img src="https://talesfromawanderingalbatross.files.wordpress.com/2013/06/mgwa-in-mist-net.jpg" alt="One way to collect bird data is through catching birds in bird nets. (photo from animalia7)" width="291"/><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Rufous-bellied_thrush_%28Turdus_rufiventris%29.JPG/1024px-Rufous-bellied_thrush_%28Turdus_rufiventris%29.JPG" alt="A photo of a Rufous-bellied thrush (Turdus rufiventris) (Photo by Charles J. Sharp)" width="291"/>
 
 ###### Image 5: One way to collect bird data is through catching birds in bird nets. (Photo of a MacGillivray's Warbler in a mist net) (Photo from animalia7)
 
@@ -264,9 +268,13 @@ The mean lmr of birds found above 1000 m = 7.9 while the mean lmr of birds found
 
 -   Landmann A, Winding N. Guild Organization and Morphology of High-Altitude Granivorous and Insectivorous Birds: Convergent Evolution in an Extreme Environment. Oikos. 2995 (cited 2022 Feb 18);73(2):237-250.
 
+-   Lüdecke D, Ben-Shachar M, Patil I, Waggoner P, Makowski D (2021). "performance: An R Package for Assessment, Comparison and Testing of Statistical Models." *Journal of Open Source Software*, **6**(60), 3139. doi: [10.21105/joss.03139](https://doi.org/10.21105/joss.03139).
+
 -   Slowikowski *et al.*, (2021). ggrepel. <https://githubcom/slowkow/ggrepel>
 
 -   Sun Y, Li M, Song G, Lei F, Li D, Wu Y. The Role of Climate Factors in Geographic Variation in Body Mass and Wing Length in a Passerine Bird. Avian Res. 2017 (cited 2022 Feb 19); 8, 1.
+
+-   Symonds MR, Tattersall GJ. Geographical variation in bill size across bird species provides evidence for Allen's rule. Am Nat. 2010 Aug;176(2):188-97. doi: 10.1086/653666. PMID: 20545560.
 
 -   RStudio Team (2019), RStudio: Integrated Development for R. RStudio, Inc., Boston, MA, URL <http://www>. rstudio.com/.
 

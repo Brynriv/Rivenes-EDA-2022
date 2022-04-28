@@ -286,11 +286,13 @@ exp(1.647261)
 
 
 -----------------------------------------------------------------
+  NEW STUFF
+-----------------------------------------------------------------
 
 # Wing Length ---------------------------------------------------
 
-length_vs_mass <- mutate(bird_data, 
-                         wings_to_mass = wing_length_mm / body_mass_g)
+length_vs_mass <- mutate(length_vs_mass, 
+                         wings_to_mass = wing_length_mm / body_mass_g)      #<- why is this suddenly not working???
 
 #testing for normal distribution of wing length
 ggplot(data = length_vs_mass) +
@@ -300,6 +302,8 @@ ggplot(data = length_vs_mass) +
 #log of wing_length_mm to correct right skew 
 length_vs_mass <-mutate(length_vs_mass, ln_wings = log(wing_length_mm))
 
+#log of wing_length_mm vs mass 
+length_vs_mass <-mutate(length_vs_mass, ln_wings_mass = log(wings_to_mass))
 
 #Wing Length log ------------------------------------------------
 
@@ -308,11 +312,17 @@ ggplot(data = length_vs_mass) +
   geom_histogram(mapping = aes(
     x = ln_wings), bins = 100)
 
-#testing for normal distribution of ln_wings
+#testing for normal distribution of ln_wings (all orders)
 ggplot(data = length_vs_mass) +
   geom_histogram(mapping = aes(
     x = ln_wings), bins = 100)+ 
   facet_wrap(~Order)
+
+
+#testing for normal distribution of ln_wings
+ggplot(data = length_vs_mass) +
+  geom_histogram(mapping = aes(
+    x = ln_wings_mass), bins = 100)
 
 
 #Wing Length vs Altitude ----------------------------------------
@@ -396,3 +406,84 @@ length_vs_mass %>%
     x = altitude)) +
   geom_point() +
   geom_smooth(method = "lm")
+
+
+#Fit Lines (wings) ---------------------------------------------------
+
+#fit line of passeriformes: furnariidea wings
+length_vs_mass %>% 
+  filter(
+    Order=="Passeriformes",
+    Family=="Furnariidae",
+  ) %>% 
+  ggplot(mapping = aes(
+    y = ln_wings, 
+    x = altitude)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+
+#fit line of passeriformes: furnariidea altitude >1000 wings
+length_vs_mass %>% 
+  filter(
+    Order=="Passeriformes",
+    Family=="Furnariidae",
+    altitude > 1000
+  ) %>% 
+  ggplot(mapping = aes(
+    y = ln_wings, 
+    x = altitude)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+
+#Bill Length vs Altititude ------------------------------------------------
+
+#rename data
+length_vs_mass <- rename(length_vs_mass, 
+                    bill_length = Bill_length.mm.)
+
+
+#log of bill length to correct right skew 
+length_vs_mass <-mutate(length_vs_mass, ln_bills = log(bill_length))
+
+#testing for normal distribution of Bill Length (all orders)
+ggplot(data = length_vs_mass) +
+  geom_histogram(mapping = aes(
+    x = bill_length), bins = 100)+ 
+  facet_wrap(~Order)
+
+#ggplot Bill Length vs Altitude (color)
+ggplot(data = bird_data) +
+  geom_point(mapping = aes(
+    y = bill_length,
+    x = altitude,
+    color = Order),
+    alpha = 0.4)
+
+
+#geom smooth ln_bills vs altitude
+length_vs_mass %>% 
+  filter(
+    Order=="Passeriformes",
+    Family=="Furnariidae",
+  ) %>% 
+  ggplot(mapping = aes(
+    y = ln_bills, 
+    x = altitude)) +
+  geom_point() +
+  geom_smooth(method = "lm")
+
+
+#QQ Plot -------------------------------------------------------
+
+# install and load performance pkg
+library(performance)
+
+#creating fit
+
+fit <- lm(ln_bills~altitude, data=length_vs_mass)
+
+# testing for non-normality
+
+check_model(fit)
