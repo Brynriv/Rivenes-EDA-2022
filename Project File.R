@@ -2,10 +2,9 @@
 
 # Load Packages -----------------------------------------------------------
 
-
 library(tidyverse)
 library(ggrepel)
-
+library(performance)
 
 # Read Data ---------------------------------------------------------------
 
@@ -291,9 +290,6 @@ exp(1.647261)
 
 # Wing Length ---------------------------------------------------
 
-length_vs_mass <- mutate(length_vs_mass, 
-                         wings_to_mass = wing_length_mm / body_mass_g)      #<- why is this suddenly not working???
-
 #testing for normal distribution of wing length
 ggplot(data = length_vs_mass) +
   geom_histogram(mapping = aes(
@@ -302,8 +298,6 @@ ggplot(data = length_vs_mass) +
 #log of wing_length_mm to correct right skew 
 length_vs_mass <-mutate(length_vs_mass, ln_wings = log(wing_length_mm))
 
-#log of wing_length_mm vs mass 
-length_vs_mass <-mutate(length_vs_mass, ln_wings_mass = log(wings_to_mass))
 
 #Wing Length log ------------------------------------------------
 
@@ -317,12 +311,6 @@ ggplot(data = length_vs_mass) +
   geom_histogram(mapping = aes(
     x = ln_wings), bins = 100)+ 
   facet_wrap(~Order)
-
-
-#testing for normal distribution of ln_wings
-ggplot(data = length_vs_mass) +
-  geom_histogram(mapping = aes(
-    x = ln_wings_mass), bins = 100)
 
 
 #Wing Length vs Altitude ----------------------------------------
@@ -360,24 +348,6 @@ length_vs_mass %>%
   geom_point() +
   geom_smooth(method = "lm") +
   xlim(c(0,1700))
-
-
-#ggplot Wing Length to Mass vs Altitude (color)
-ggplot(data = length_vs_mass) +
-  geom_point(mapping = aes(
-    y = wings_to_mass,
-    x = altitude,
-    color = Order),
-    alpha = 0.4)
-
-#wing length to mass vs altitude Passeriformes
-length_vs_mass %>% 
-  filter(Order=="Passeriformes") %>% 
-  ggplot() +
-  geom_point(mapping = aes(
-    x = wings_to_mass, 
-    y = altitude)
-  )
 
 
 # Geom smooth Wings--------------------------------------------------
@@ -423,7 +393,7 @@ length_vs_mass %>%
   geom_smooth(method = "lm")
 
 
-#fit line of passeriformes: furnariidea altitude >1000 wings
+#fit line of passeriformes: furnariidae altitude >1000 wings
 length_vs_mass %>% 
   filter(
     Order=="Passeriformes",
@@ -444,7 +414,7 @@ length_vs_mass <- rename(length_vs_mass,
                     bill_length = Bill_length.mm.)
 
 
-#log of bill length to correct right skew 
+#log of bill length
 length_vs_mass <-mutate(length_vs_mass, ln_bills = log(bill_length))
 
 #testing for normal distribution of Bill Length (all orders)
@@ -477,9 +447,6 @@ length_vs_mass %>%
 
 #QQ Plot -------------------------------------------------------
 
-# install and load performance pkg
-library(performance)
-
 #creating fit
 
 fit <- lm(ln_bills~altitude, data=length_vs_mass)
@@ -487,3 +454,4 @@ fit <- lm(ln_bills~altitude, data=length_vs_mass)
 # testing for non-normality
 
 check_model(fit)
+

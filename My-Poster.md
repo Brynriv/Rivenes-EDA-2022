@@ -13,8 +13,10 @@ Casey Perkins, Bryn Rivenes
     higher altitudes should have less surface area and a higher body
     mass​
 
--   There have been many studies that support Allen’s Rule (LIST
-    SOURCES)
+-   There have been many studies that support Allen’s Rule (Landmann A,
+    Winding N, 1995, Blackburn T, Ruggiero A, 2001, Lamichhaney S, Han
+    F, Berglund J, Wang C, Almén MS, Webster MT, Grant BR, Grant PR,
+    Andersson L, 2016, Sun Y, Li M, Song G, Lei F, Li D, Wu Y, 2017)
 
 -   However, some studies have shown this rule to be inaccurate (Alho
     J, et al. 2010)​
@@ -33,15 +35,28 @@ Casey Perkins, Bryn Rivenes
 -   The Atlantic Forest is located mostly on the East coast
     of Brazil, with some of it stretching into Argentina and Paraguay.
 
--   ​Our data came from **The Atlantic Bird’s Data Set**; a data set of
-    bird morphological traits and locations complied over decades by
-    many scientists through museum collections, online data bases,
-    published sources, and unpublished reports for data
-    analysis (Hasui E, et al. 2017). It includes data from **72,483
-    individual birds** and **780 species**​.
+​Our data came from **The Atlantic Bird’s Data Set**; a data set of bird
+morphological traits and locations complied over decades by many
+scientists through museum collections, online data bases, published
+sources, and unpublished reports for data analysis (Hasui E, et
+al. 2017). It includes data from **72,483 individual birds** and **780
+species**​.
 
--   Using R and R Studio along with the packages tidyverse and ggrepel,
-    we examined this data.
+<img src="https://journals.plos.org/plosone/article/figure/image?size=large&amp;id=10.1371/journal.pone.0107792.g001" title="Map" alt="A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)" width="186"/><img src="https://upload.wikimedia.org/wikipedia/commons/d/d8/BirdMorphometrics.jpg" alt="An illistration demonstrating how scientist measure birds (Image by Anton Reichenow)" width="249"/><img src="https://talesfromawanderingalbatross.files.wordpress.com/2013/06/mgwa-in-mist-net.jpg" alt="One way to collect bird data is through catching birds in bird nets. (photo from animalia7)" width="234"/>
+
+###### Image 3: A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)
+
+###### Image 4: An illustration demonstrating how scientist measure birds (Image by Anton Reichenow)
+
+###### Image 5: One way to collect bird data is through catching birds in bird nets. (Photo of a MacGillivray’s Warbler in a mist net) (Photo from animalia7)
+
+## Results
+
+-   Using R and R Studio (RStudio Team, 2019) along with the packages
+
+-   tidyverse (Wickham *et al*., 2019), ggrepel (Slowikowski *et al.*,
+    2021), and performance (Lüdecke, Ben-Shachar, Patil, Waggoner,
+    Makowski, 2021), we examined this data.
 
 -   We use the length to mass ratio as a proxy for body
     surface-area-to-volume ratio
@@ -54,46 +69,59 @@ Casey Perkins, Bryn Rivenes
     it down even farther to just the genus Turdus to try and get a more
     accurate result.
 
-    <img src="https://journals.plos.org/plosone/article/figure/image?size=large&amp;id=10.1371/journal.pone.0107792.g001" title="Map" alt="A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)" width="186"/><img src="https://talesfromawanderingalbatross.files.wordpress.com/2013/06/mgwa-in-mist-net.jpg" alt="One way to collect bird data is through catching birds in bird nets. (photo from animalia7)" width="291"/>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Rufous-bellied_thrush_%28Turdus_rufiventris%29.JPG/1024px-Rufous-bellied_thrush_%28Turdus_rufiventris%29.JPG" alt="A photo of a Rufous-bellied thrush (Turdus rufiventris) (Photo by Charles J. Sharp)" width="291"/>
 
-###### Photo 3: A map of the Atlantic Forest (Image by Viviane G. FerroPriscila LemesAdriano S. MeloRafael Loyola)
+    ###### Image 6: A photo of a Rufous-bellied thrush (Turdus rufiventris), an example of a species in the Turdus g (Photo by Charles J. Sharp)
 
-###### Photo 4: One way to collect bird data is through catching birds in bird nets. (Photo of a MacGillivray’s Warbler in a mist net) (Photo from animalia7)
-
-## Results
+-   I then wanted to explore if wing length was affected by altitude, as
+    some researchers have found in other studies (Landmann and
+    Winding, 1995) as well as bill length (Symonds, Tattersall, 2010).
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
-###### Figure 1: We ran our mass to length ratio with altitude and found we had very messy data
+###### Figure 1: A scatterplot of altitude vs length to mass ratio
+
+We ran our mass to length ratio with altitude and found we had very
+messy data
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
 
-###### Figure 2: We then looked at the same graph but with each order represented by a color and still did not see any major correlations.
+###### Figure 2: A scatterplot of the altitude to length mass ratio, witch each order being represented by a different color
+
+We then looked at the same graph but with each order represented by a
+color and still did not see any major correlations.
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
 
-###### Figure 3: Here we wanted to see if our data had a normal distribution and instead found that it was severely right skewed.
+###### Figure 3: A frequency chart of all length mass ratios (lmr) from our data, which shows a strong right skew.
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
 
-###### Figure 4: We then examined this histogram for each order.
+###### Figure 4: Frequency charts of length_mass_ratio (lmr) separated out by orders.
+
+As we can see, our data in Figure 3 has a strong right skew. To correct
+for this, we took the natural log of this data. We also separated out
+each order to see if any specific one was greatly affecting the skew.
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
 
-###### Figure 5: We corrected the skew in our data by transforming it by taking the natural log of the length mass ratios (lmr).
+###### Figure 5: Frequency charts for the log of the lmr, separated out by order.
 
-As we can see from Figure 4 and 5, the majority of our data seems to
-come from one order, the Passeriformes. A few other groups (such as
-Anseriformes) could be skewing our data. Because of this, we decided to
-focus on just this one group.
+In Figure 4 and 5, the majority of our data seems to come from one
+order, the Passeriformes (song birds). A few other groups (such as
+Anseriformes (waterfowl)) could be skewing our data. Because of this, we
+decided to focus on just this one group.
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
 
-###### Figure 6: Examining the log of the lmr vs altitude for each species in the genus Turdus, we were able to see a slight positive correlation.
+###### Figure 6: A geom_smooth graph comparing altitude to ln_lmr, which each color representing a different species in the genus Turdus
+
+Examining the log of the lmr vs altitude for each species in the genus
+Turdus, we were able to see a very slight positive correlation.
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->![](My-Poster_files/figure-gfm/unnamed-chunk-7-2.png)<!-- -->
 
-###### Figure 6: We plotted the mean lmr for each species in the family Furnariidae and saw a slight upward trend which intensified when we looked exclusively at altitudes higher than 1000 meters.
+###### Figure 7 and 8: Two scatter plots of the log of mean lmr for each species in the family Furnariidae. Figure 7 goes into more detail and exmines this group from only above 1000 m. The blue line in both graphs is a regression line using geom_smooth.
 
 We also looked at the ln(lmr) vs altitude for another group under
 Passeriformes (the family Furnariidae), we did not see much of a
@@ -103,7 +131,7 @@ between the log of the lmr and altitude.
 
 ![](My-Poster_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
 
-###### Figure : two frequency charts for the ln(lmr) for all species in the order Passeriformes both above and below an altitude of 1000 meters. The red line indicates the mean of each set of data.
+###### Figure 9: two frequency charts for the ln(lmr) for all species in the order Passeriformes both above and below an altitude of 1000 meters. The red line indicates the mean of each set of data.
 
 We examined the counts of lmr for all passeriformes species both above
 and below 1000 m and we could clearly see that there was a difference in
@@ -112,6 +140,42 @@ the two means.
 The mean lmr of birds found above 1000 m = 7.9 while the mean lmr of
 birds found below 1000 m = 5.2. A Welch’s Two Sample t-test found t(76)
 = 3.6, p =0.0005.
+
+After our inital presentation, I then went to use similar methods to
+examine the birds’ wing and beak lengths compared to altitudes.
+
+###### Figure 10: A scatter plot comparing altitude to wing length in mm. Each Order is represented by a different color
+
+Plotting out altitude vs wing length did not immediately show any
+correlation. I then wanted to look at these values for the family
+Furnariidae in the Order Passeriformes, as we had done for LMR. After
+taking the log of these values once again, I examined them in a scatter
+plot with a best fit line.
+
+![](My-Poster_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->![](My-Poster_files/figure-gfm/unnamed-chunk-11-2.png)<!-- -->
+
+###### Figures 11 and 12: A scatterplot with a best fit line for altitude vs the log of wing length for Passeriformes. Figure 12 shows the correlation above 1000 m.
+
+Overall, wing length seemed to have little to no correlation in relation
+to altitude, and if anything, also showed a positive correlation. This
+was similar to our LMR data.
+
+I then examined bill length.
+
+![](My-Poster_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+
+###### Figure 13: A scatter plot comparing altitude to bill length, each order being represented by a different color
+
+Immediately, there wasn’t much of a correlation. However, after I once
+again narrowed it down to Passeriformes in the family Furnariidae and
+took the natural log, I did get interesting results.
+
+![](My-Poster_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+
+###### Figure 14: A scatterplot with a best fit line for altitude vs the log of bill length for Passeriformes
+
+Unlike our other examinations, bill length actually did seem to have a
+negative correlation, as we should expect to see as per Allen’s Rule.
 
 ## Discussion
 
@@ -122,10 +186,22 @@ birds found below 1000 m = 5.2. A Welch’s Two Sample t-test found t(76)
 -   This is the exact **opposite** of what we would expect to see
     according to **Allen’s Rule** ​
 
+-   Wing length also seemed to have an oppisite effect than what had
+    been expected.
+
 -   Other studies have found similar results that contradict **Allen’s
     Rule** and suggest that the body surface area to volume ratio has a
     genetic basis rather than an environmental one (Alho J, et
     al. 2010).
+
+-   Bill length, on the other hand, did seem to follow what was expected
+    according to Allen’s rule
+
+-   Allen’s rule typically does look at extremity length, so it is
+    interesting to see the bill’s seemingly being affected here
+
+-   It is also interesting that LMR and wing length did not seem to
+    follow this rule
 
 -   In future studies, we would be very interested in exploring the
     reason these birds do not seem to follow Allen’s Rule. For example,
@@ -134,7 +210,8 @@ birds found below 1000 m = 5.2. A Welch’s Two Sample t-test found t(76)
     and see if they follow the rule.
 
 -   It would also be interesting to explore why Allen’s Rule overall,
-    seems to be applicable in some areas, but not others.
+    seems to be applicable in some regions, but not others, as well in
+    certain characteristics over others.
 
 ## References
 
@@ -174,12 +251,22 @@ birds found below 1000 m = 5.2. A Welch’s Two Sample t-test found t(76)
     Evolution in an Extreme Environment. Oikos. 2995 (cited 2022 Feb
     18);73(2):237-250.
 
+-   Lüdecke D, Ben-Shachar M, Patil I, Waggoner P, Makowski D (2021).
+    “performance: An R Package for Assessment, Comparison and Testing of
+    Statistical Models.” *Journal of Open Source Software*,
+    **6**(60), 3139. doi:
+    [10.21105/joss.03139](https://doi.org/10.21105/joss.03139).
+
 -   Slowikowski *et al.*, (2021). ggrepel.
     <https://githubcom/slowkow/ggrepel>
 
 -   Sun Y, Li M, Song G, Lei F, Li D, Wu Y. The Role of Climate Factors
     in Geographic Variation in Body Mass and Wing Length in a Passerine
     Bird. Avian Res. 2017 (cited 2022 Feb 19); 8, 1.
+
+-   Symonds MR, Tattersall GJ. Geographical variation in bill size
+    across bird species provides evidence for Allen’s rule. Am Nat. 2010
+    Aug;176(2):188-97. doi: 10.1086/653666. PMID: 20545560.
 
 -   RStudio Team (2019), RStudio: Integrated Development for R. RStudio,
     Inc., Boston, MA, URL <http://www>. rstudio.com/.
