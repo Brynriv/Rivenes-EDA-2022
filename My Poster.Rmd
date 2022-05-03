@@ -113,7 +113,7 @@ ggplot(data = length_vs_mass) +
   theme_gray(base_size = 24) 
 ```
 
-###### Figure 1: A scatterplot of altitude vs length to mass ratio 
+###### Figure 1: A scatterplot of altitude vs length to mass ratio
 
 We ran our mass to length ratio with altitude and found we had very messy data
 
@@ -307,7 +307,7 @@ length_vs_mass %>%
 
 ```
 
-###### Figures 11 and 12: A scatterplot with a best fit line for altitude vs the log of wing length for Passeriformes. Figure 12 shows the correlation above 1000 m. 
+###### Figures 11 and 12: A scatterplot with a best fit line for altitude vs the log of wing length for Passeriformes. Figure 12 shows the correlation above 1000 m.
 
 Overall, wing length seemed to have little to no correlation in relation to altitude, and if anything, also showed a positive correlation. This was similar to our LMR data.
 
